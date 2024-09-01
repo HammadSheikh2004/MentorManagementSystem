@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Mentor_Management_System.Models.StudentModel>
+
+@{
+    ViewData["Title"] = "DisplayStudent";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="h2 py-2 my-4 text-center text-primary rounded shadow">Show Student</div>
+        @if (Model == null || !Model.Any())
+        {
+            <div class="h3 text-center my-3 text-danger">No Data Found</div>
+        }
+        else
+        {
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.stdId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.stdEmail)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.stdPassword)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.stdCourse)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FacultyName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ClassTime)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Attendance)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FacultyId)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.stdId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.stdEmail)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.stdPassword)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.stdCourse)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FacultyName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ClassTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Attendance)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Faculty.FacultyCourse)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FacultyId)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+        
+    </div>
+</div>
+

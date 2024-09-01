@@ -1,0 +1,22 @@
+.welcome span {
+    background-image: linear-gradient(to left, #5fcf80, gray);
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0% 100%;
+    }
+
+    50% {
+        background-position: 100% 0%;
+    }
+
+    100% {
+        background-position: 0% 100%;
+    }
+}

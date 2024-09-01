@@ -1,0 +1,125 @@
+﻿@model Mentor_Management_System.Models.MentorViewModel;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Admission Form - Mentor</title>
+</head>
+
+
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card p-4 shadow-sm bg-white rounded">
+                    <div class="h4"> <span class="bg-primary text-white p-2 rounded">Registration Process</span> </div>
+                    <form asp-action="AdmissionProcess" enctype="multipart/form-data">
+                        <h1>@ViewBag.Message</h1>
+                        <h1>@ViewBag.School_Marks</h1>
+                        <h1>@ViewBag.College_Marks</h1>
+                        <h1>@ViewBag.ErrorMsg</h1>
+                        <div class="my-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" asp-for="User.User_First_Name" id="FName" placeholder="First Name" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" id="LName" asp-for="User.User_Last_Name" placeholder="Last Name" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="email" asp-for="User.User_Email" id="Email" class="form-control"
+                                           placeholder="Enter Email">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" asp-for="User.User_Phone" id="Phone" class="form-control"
+                                           placeholder="Enter Phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-3">
+                            <input type="text" asp-for="UserInfo.School_Name" id="sName" class="form-control" placeholder="School Name">
+                            <span asp-validation-for="UserInfo.School_Name" class="text-danger"></span>
+                        </div>
+                        <div class="my-3">
+                            <input type="text" asp-for="UserInfo.College_Name" id="cName" class="form-control" placeholder="College Name">
+                            <span asp-validation-for="UserInfo.College_Name" class="text-danger"></span>
+                        </div>
+                        <div class="my-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="number" asp-for="UserInfo.School_Marks"  id="mMarks" class="form-control"
+                                           placeholder="Enter Matric Marks">
+                                    <span asp-validation-for="UserInfo.School_Marks" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" asp-for="UserInfo.College_Marks"  id="iMarks" class="form-control"
+                                           placeholder="Enter Inter Marks">
+                                    <span asp-validation-for="UserInfo.College_Marks" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="date" class="form-label">Date Of Birth</label>
+                                    <input type="text" asp-for="UserInfo.DateOfBirth" class="form-control" id="date">
+                                    <span asp-validation-for="UserInfo.DateOfBirth" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Gender</label>
+                                    <select class="form-select" asp-for="UserInfo.Gender" aria-label="Default select example">
+                                        <option selected>Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                    <span asp-validation-for="UserInfo.Gender" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-3">
+                            <input type="text" asp-for="UserInfo.CNIC" id="cnic" placeholder="CNIC Number" class="form-control">
+                            <span asp-validation-for="UserInfo.CNIC" class="text-danger"></span>
+                        </div>
+                        <div class="my-3">
+                            <input type="text" asp-for="UserInfo.Course" id="course" placeholder="Enter Course (BS Software Engineering)" class="form-control">
+                            <span asp-validation-for="UserInfo.Course" class="text-danger"></span>
+                        </div>
+                        <div class="my-3">
+
+                            <input  type="hidden" asp-for="User.Admit_Card" value="NoIssue">
+                            <input type="hidden" asp-for="User.APF_Challan" value="Pending">
+                            <input type="hidden" asp-for="User.TF_Challan" value="Pending">
+                            <input  type="hidden" asp-for="User.WellCome_Letter" value="NoIssue">
+
+                            <input type="file" asp-for="UserInfo.User_Image" name="User_Image" id="image" placeholder="Upload Image" class="form-control">
+                            <span asp-validation-for="UserInfo.User_Image" class="text-danger"></span>
+                        </div>
+                        <div class="my-3">
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

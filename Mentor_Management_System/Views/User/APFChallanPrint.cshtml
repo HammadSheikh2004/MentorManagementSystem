@@ -1,0 +1,370 @@
+﻿@model Mentor_Management_System.Models.MentorViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>APF Challan</title>
+</head>
+<style>
+    .bank-detail .detail {
+        font-size: 13px;
+    }
+
+    .user-info-detail {
+        font-size: 13px;
+    }
+
+    .table > :not(caption) > * > * {
+        padding: 0px 2px !important;
+    }
+</style>
+
+<body style="background-color: #eee;">
+
+    <div id="PDF_Container">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-4 border border-dark border-2 border-end-4 border-start-4 border-top-0 border-bottom-0">
+                    <div class="bank-detail">
+                        <div class="text-center h2 my-2">Mentor Tech Institute</div>
+                        <div class="text-left mt-2">Payable at:</div>
+                        <div class="text-center text-uppercase h4">ABC Islamic Bank</div>
+                        <div class="text-center text-uppercase">
+                            <div class="detail">pay at any baranch of abc islamic bank</div>
+                            <div class="detail mt-2 fw-bold">ibn number: pk0022330033003030303</div>
+                            <div class="fs-6 mt-2 fw-bold">University Copy</div>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="mt-3">
+                                    <tr>
+                                        <td class="pe-3 fw-bold">Voucher#:</td>
+                                        <td class="user-info-detail">92396632666</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-2 fw-bold">Reg NO:</td>
+                                        <td class="user-info-detail">SP24-BSSE-0033</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-3 fw-bold">Name</td>
+                                        <td class="user-info-detail">@Model.User.User_First_Name</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-3 fw-bold">Terms</td>
+                                        <td class="user-info-detail">Spring 24</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-3 fw-bold">Program</td>
+                                        <td class="user-info-detail">@Model.UserInfo.Course</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="col-md-6">
+                                <table class="mt-3">
+                                    <tr>
+                                        <td class="pe-1 user-info-detail">Challan Issue Date:</td>
+                                        <td class="user-info-detail challan-issue"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-1 user-info-detail">Due Date:</td>
+                                        <td class="user-info-detail due-data"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fee-detail">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-bordered" style="border-color: black;">
+                                    <thead>
+                                        <tr>
+                                            <th class="user-info-detail" scope="col">S.No</th>
+                                            <th class="user-info-detail" scope="col">Particulars</th>
+                                            <th class="user-info-detail" scope="col">Amount</th>
+                                            <th class="user-info-detail" scope="col">Concession</th>
+                                            <th class="user-info-detail" scope="col">Receivable</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Exam Fee</td>
+                                            <td>1500</td>
+                                            <td>0</td>
+                                            <td>1500</td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="5"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="user-info-detail">Total Amount</td>
+                                            <td>1500</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="challan_print mt-4 text-center">
+                                    <p>Challan Print Date: <span class="challan-issue"></span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4 border border-dark border-1 border-top-0 border-bottom-0">
+                    <div class="bank-detail">
+                        <div class="text-center h2 my-2">Mentor Tech Institute</div>
+                        <div class="text-left mt-2">Payable at:</div>
+                        <div class="text-center text-uppercase h4">ABC Islamic Bank</div>
+                        <div class="text-center text-uppercase">
+                            <div class="detail">pay at any baranch of abc islamic bank</div>
+                            <div class="detail mt-2 fw-bold">ibn number: pk0022330033003030303</div>
+                            <div class="fs-6 mt-2 fw-bold">Bank Copy</div>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="mt-3">
+                                    <tr>
+                                        <td class="pe-3 fw-bold">Voucher#:</td>
+                                        <td class="user-info-detail">92396632666</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-2 fw-bold">Reg NO:</td>
+                                        <td class="user-info-detail">SP24-BSSE-0033</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-3 fw-bold">Name</td>
+                                        <td class="user-info-detail">@Model.User.User_First_Name</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-3 fw-bold">Terms</td>
+                                        <td class="user-info-detail">Spring 24</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-3 fw-bold">Program</td>
+                                        <td class="user-info-detail">@Model.UserInfo.Course</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="col-md-6">
+                                <table class="mt-3">
+                                    <tr>
+                                        <td class="pe-1 user-info-detail">Challan Issue Date:</td>
+                                        <td class="user-info-detail challan-issue"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-1 user-info-detail ">Due Date:</td>
+                                        <td class="user-info-detail due-data"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fee-detail">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-bordered" style="border-color: black;">
+                                    <thead>
+                                        <tr>
+                                            <th class="user-info-detail" scope="col">S.No</th>
+                                            <th class="user-info-detail" scope="col">Particulars</th>
+                                            <th class="user-info-detail" scope="col">Amount</th>
+                                            <th class="user-info-detail" scope="col">Concession</th>
+                                            <th class="user-info-detail" scope="col">Receivable</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Exam Fee</td>
+                                            <td>1500</td>
+                                            <td>0</td>
+                                            <td>1500</td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="5"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="user-info-detail">Total Amount</td>
+                                            <td>1500</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="challan_print mt-4 text-center">
+                                    <p>Challan Print Date: <span class="challan-issue"></span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4 border border-dark border-1 border-top-0 border-bottom-0">
+                    <div class="bank-detail">
+                        <div class="text-center h2 my-2">Mentor Tech Institute</div>
+                        <div class="text-left mt-2">Payable at:</div>
+                        <div class="text-center text-uppercase h4">ABC Islamic Bank</div>
+                        <div class="text-center text-uppercase">
+                            <div class="detail">pay at any baranch of abc islamic bank</div>
+                            <div class="detail mt-2 fw-bold">ibn number: pk0022330033003030303</div>
+                            <div class="fs-6 mt-2 fw-bold">Student Copy</div>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="mt-3">
+                                    <tr>
+                                        <td class="pe-3 fw-bold">Voucher#:</td>
+                                        <td class="user-info-detail">92396632666</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-2 fw-bold">Reg NO:</td>
+                                        <td class="user-info-detail">SP24-BSSE-0033</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-3 fw-bold">Name</td>
+                                        <td class="user-info-detail">@Model.User.User_First_Name</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-3 fw-bold">Terms</td>
+                                        <td class="user-info-detail">Spring 24</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-3 fw-bold">Program</td>
+                                        <td class="user-info-detail">@Model.UserInfo.Course</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="col-md-6">
+                                <table class="mt-3">
+                                    <tr>
+                                        <td class="pe-1 user-info-detail">Challan Issue Date:</td>
+                                        <td class="user-info-detail challan-issue"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pe-1 user-info-detail">Due Date:</td>
+                                        <td class="user-info-detail due-data"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fee-detail">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-bordered" style="border-color: black;">
+                                    <thead>
+                                        <tr>
+                                            <th class="user-info-detail" scope="col">S.No</th>
+                                            <th class="user-info-detail" scope="col">Particulars</th>
+                                            <th class="user-info-detail" scope="col">Amount</th>
+                                            <th class="user-info-detail" scope="col">Concession</th>
+                                            <th class="user-info-detail" scope="col">Receivable</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Exam Fee</td>
+                                            <td>1500</td>
+                                            <td>0</td>
+                                            <td>1500</td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="5"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="user-info-detail">Total Amount</td>
+                                            <td>1500</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="challan_print mt-4 text-center">
+                                    <p>Challan Print Date: <span class="challan-issue"></span></p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn btn-primary" id="printPDF">Print PDF</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+        var date = new Date().getDate();
+        var year = new Date().getFullYear();
+        var mon = new Date().getMonth();
+        var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var monthName = monthNames[mon];
+
+        var dueDate = new Date();
+        dueDate.setMonth(dueDate.getMonth() + 2);
+
+        var dueDateString = dueDate.getDate() + " " + monthNames[dueDate.getMonth()] + " " + dueDate.getFullYear();
+
+        var challan_issue_elements = document.querySelectorAll(".challan-issue");
+        challan_issue_elements.forEach(function (element) {
+            element.innerHTML = `${date} ${monthName} ${year}`;
+        });
+
+        var due_date_elements = document.querySelectorAll(".due-data");
+        due_date_elements.forEach(function (element) {
+            element.innerHTML = dueDateString;
+        });
+
+        var pdfButton = document.getElementById("printPDF");
+
+        var pdfButton = document.getElementById("printPDF");
+
+        pdfButton.addEventListener('click', () => {
+            var pdfcontainer = document.getElementById("PDF_Container");
+            pdfcontainer.style.padding = "0";
+            pdfcontainer.style.margin = "0";
+            html2pdf(pdfcontainer, {
+                filename: 'Challan.pdf',
+                margin: [0, 0, 0, 0],
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' },
+                html2canvas: { scale: 2 }
+            });
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

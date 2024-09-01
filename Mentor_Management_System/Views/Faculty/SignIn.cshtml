@@ -1,0 +1,50 @@
+﻿@model Mentor_Management_System.Models.FacultyModel
+
+@{
+    ViewData["Title"] = "Sign In";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="heading h3 text-center py-1 shadow rounded text-white bg-primary my-4">
+            Faculty Portal
+        </div>
+        <div class="row ">
+            <div class="col-md-12">
+                <h4 class="text-center my-2">Sign In</h4>
+                <form asp-action="SignIn" method="post">
+                    <div class="my-3">
+                        <input type="email" asp-for="FacultyEmail" id="email" placeholder="Enter Email" class="form-control">
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="my-3">
+                        <input type="password" id="password" asp-for="Password"  placeholder="Enter Password" class="form-control">
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="my-2">
+                        <input type="submit" id="registerSubmit" value="Sign In" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

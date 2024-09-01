@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Payment</title>
+</head>
+
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card p-5 shadow">
+                    <img src="~/MentorStyles/assets/img/stripImages.png" height="200px" width="300px" alt="">
+                    <p class="text-left h4">Payment: <span class="text-center">1500/=</span></p>
+                    <a asp-action="Payment" asp-controller="User" class="btn btn-success mt-4">Pay</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

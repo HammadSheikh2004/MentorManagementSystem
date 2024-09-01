@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Mentor_Management_System.Models.FacultyModel>
+
+@{
+    ViewData["Title"] = "DisplayFaculty";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="h2 py-2 my-4 text-center text-white bg-primary rounded shadow">Show Faculty</div>
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FacultyName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FacultyEmail)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FacultyQualification)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FacultyCourse)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FacultyName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FacultyEmail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FacultyQualification)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FacultyCourse)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.FacultyId">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.FacultyId">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.FacultyId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

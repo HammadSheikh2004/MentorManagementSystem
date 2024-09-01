@@ -1,0 +1,67 @@
+﻿@page
+@model RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_MinimalLayout.cshtml";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="height: 700px;">
+    <div class="row ">
+        <div class="col-md-6">
+            <div id="lottie-container" class="img-fluid"></div>
+        </div>
+        <div class="col-md-6 m-auto">
+            <h4 class="text-center my-2">Create Account</h4>
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" asp-for="Input.FirstName" id="first_name" placeholder="First Name" class="form-control">
+                            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" asp-for="Input.LastName" id="last_name" placeholder="Last Name" class="form-control">
+                            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-3">
+                    <input type="email" asp-for="Input.Email" id="email" placeholder="Enter Email" class="form-control">
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="my-3">
+                    <input type="text" asp-for="Input.phone" id="phone" placeholder="Enter Phone" class="form-control">
+                    <span asp-validation-for="Input.phone" class="text-danger"></span>
+                </div>
+                <div class="my-3">
+                    <input type="password" asp-for="Input.Password" id="password" placeholder="Enter Password" class="form-control">
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="my-3">
+                    <input type="password" asp-for="Input.ConfirmPassword" id="cpassword" placeholder="Confirm Password" class="form-control">
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="my-2">
+                    <input type="submit" id="registerSubmit" value="Submit" class="btn btn-primary">
+                </div>
+            </form>
+            <div class="my-2">
+                <p class="text-center h5">Already an Account <a asp-area="Identity" asp-page="/Account/Login">Sign In</a> </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var animation = lottie.loadAnimation({
+        container: document.getElementById('lottie-container'), // the DOM element that will contain the animation
+        renderer: 'svg', // the rendering mode: svg, canvas, or html
+        loop: true, // whether the animation should loop
+        autoplay: true, // whether the animation should start automatically
+        path: '@Url.Content("~/MentorStyles/assets/img/signUp.json")' // the path to the animation JSON file
+    });
+</script>
+

@@ -1,0 +1,45 @@
+﻿@model Mentor_Management_System.Models.StudentModel
+
+@{
+    Layout = "~/Views/Shared/_StudentPanelLayout.cshtml";
+    ViewData["Title"] = "Attendance Status";
+    var attendanceBySubject = ViewBag.AttendanceBySubject as Dictionary<string, string>;
+    var presentCount = ViewBag.PresentCount;
+    var absentCount = ViewBag.AbsentCount;
+}
+
+<div class="container">
+    <h2>Attendance Status for @Model.stdId</h2>
+
+    @if (attendanceBySubject != null && attendanceBySubject.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in attendanceBySubject)
+                {
+                    <tr style="color:@(item.Value == "Present" ? "green" : "red")">
+                        <td>@item.Key</td>
+                        <td>@item.Value</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <p><strong>Present Count:</strong> @presentCount</p>
+        <p><strong>Absent Count:</strong> @absentCount</p>
+    }
+    else
+    {
+        <p>No attendance records found for this student.</p>
+    }
+</div>
+
+
+
+

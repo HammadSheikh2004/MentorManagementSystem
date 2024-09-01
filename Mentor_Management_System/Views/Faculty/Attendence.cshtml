@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Mentor_Management_System.Models.StudentModel>
+@{
+    ViewData["Title"] = "Attendance";
+    Layout = "~/Views/Shared/_FacultyPanelLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="FetchStudent" method="post">
+                <input type="date" class="form-control" name="date" required />
+
+                <div class="form-group">
+                    <label for="course">Select Course:</label>
+                    <select class="form-control" name="course" id="course" required>
+                        <option value="">-- Select Course --</option>
+                        @if (ViewBag.Courses != null)
+                        {
+                            foreach (var course in ViewBag.Courses)
+                            {
+                                <option value="@course.Value">@course.Text</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">No courses available</option>
+                        }
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    int num = 1;
+    <form asp-action="MarkAttendance" method="post">
+        <input type="hidden" name="course" value="@ViewBag.SelectedCourse" />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Student Id</th>
+                    <th>Attendance</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@Model.ElementAt(i).stdId</td>
+                        <td>
+                            <input type="hidden" name="studentIds[@i]" value="@Model.ElementAt(i).Id" />
+                            <select class="form-select" name="attendanceStatuses[@i]">
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
+}
+else
+{
+    <p>No records found for the selected date and course.</p>
+}

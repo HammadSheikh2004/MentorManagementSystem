@@ -1,0 +1,112 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Protal";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<style>
+    .second_row {
+        display: table;
+        vertical-align: top;
+        width: 80%;
+        margin-top: 0px !important;
+        border: 1px solid #000;
+    }
+
+        .second_row .col-md-1 {
+            display: table-cell;
+            width: 40%;
+            border: 1px solid #000;
+            vertical-align: middle;
+        }
+
+        .second_row .col-md-2 {
+            display: table-cell;
+            width: 60%;
+            border: 1px solid #000;
+            vertical-align: middle;
+        }
+
+        .second_row .user-list li {
+            list-style: none !important;
+            margin-bottom: 30px !important;
+        }
+
+        .second_row .welcome:hover {
+            text-decoration: none;
+        }
+
+    .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 400px;
+    }
+
+    .second_row .box .user-list a {
+        font-size: 30px;
+    }
+
+        .second_row .box .user-list a:hover {
+            text-decoration: none !important;
+        }
+</style>
+
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div style="font-size: 60px; font-weight: bold;">Mentor Online Portal</div>
+                <div style="border-top: 2px solid black; width: 100%; height: 50px; margin: 10px 0;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="row second_row">
+            <div class="col-md-1">
+                <a href="" class="welcome">
+                    <div class="box text-center">
+                        <span style="font-size: 50px; font-weight: bold;">Welcome Mentor Tech</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <div class="box">
+                    <ul class="user-list">
+                        <li>
+                            <a asp-controller="Student" asp-action="SignIn">
+                                Student Portal
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-controller="Faculty" asp-action="SignIn">
+                                Faculty Portal
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

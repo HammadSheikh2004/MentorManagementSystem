@@ -1,0 +1,83 @@
+﻿@model List<Mentor_Management_System.Models.MentorViewModel>
+@{
+    ViewData["Title"] = "User Information";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+<div class="table-responsive">
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">User Name</th>
+            <th scope="col">User Email</th>
+            <th scope="col">User Phone</th>
+            <th scope="col">User Cnic</th>
+            <th scope="col">School Name</th>
+            <th scope="col">College Name</th>
+            <th scope="col">School Marks</th>
+            <th scope="col">College Marks</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Course</th>
+            <th scope="col">User Image</th>
+            <th scope="col">APF Challan</th>
+            <th scope="col">TF Challan</th>
+            <th scope="col">Admit Card</th>
+            <th scope="col">Welcome Letter</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.User.User_Id</th>
+                <td>@item.User.User_First_Name @item.User.User_Last_Name</td>
+                <td>@item.User.User_Email</td>
+                <td>@item.User.User_Phone</td>
+                <td>@item.UserInfo.CNIC</td>
+                <td>@item.UserInfo.School_Name</td>
+                <td>@item.UserInfo.College_Name</td>
+                <td>@item.UserInfo.School_Marks</td>
+                <td>@item.UserInfo.College_Marks</td>
+                <td>@item.UserInfo.Gender</td>
+                <td>@item.UserInfo.Course</td>
+                <td><img src="~/Users/UserImages/@item.UserInfo.User_Image" width="70px" height="70px" class="img-fluid" /></td>
+                    <td contenteditable="true" data-field="APF_Challan" data-id="@item.User.User_Id">@item.User.APF_Challan</td>
+                    <td contenteditable="true" data-field="TF_Challan" data-id="@item.User.User_Id">@item.User.TF_Challan</td>
+                    <td contenteditable="true" data-field="Admit_Card" data-id="@item.User.User_Id">@item.User.Admit_Card</td>
+                    <td contenteditable="true" data-field="WellCome_Letter" data-id="@item.User.User_Id">@item.User.WellCome_Letter</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+<script>
+    document.querySelectorAll('td[contenteditable="true"]').forEach(function(cell){
+        cell.addEventListener('blur', function(){
+            const newValue = this.textContent;
+            const field = this.getAttribute('data-field');
+            const id = this.getAttribute('data-id');
+
+            updateField(id, newValue, field);
+        })
+    });
+
+    const updateField = (id, value, field) => {
+        fetch("/Admin/UpdateField",{
+            method: "POST",
+            body: JSON.stringify({ Id: id, Value: value, Field: field }),
+            headers:{
+                "Content-Type": "application/json", 
+                'RequestVerificationToken': '@Html.AntiForgeryToken()'
+            }
+        }).then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Data Updated");
+                } else {
+                    alert("Data Not Updated");
+                }
+            });
+    }
+
+</script>
